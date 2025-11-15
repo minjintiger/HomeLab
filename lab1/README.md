@@ -126,8 +126,14 @@ Shows packets where the TCP flag byte equals exactly SYN (0x02). Matches the sam
 /lab1/
 ├── README.md
 ├── nmap_scan.pcap
-├── Screenshots
-└── HomeLab1-Recon-and-Traffic-Analysis.pdf
+├── HomeLab1-Recon-and-Traffic-Analysis.pdf
+└── Screenshots/
+    ├── 14089_packets_captured.png
+    ├── icmp_echo.png
+    ├── no_http_ssh.png
+    ├── syn_packets.png
+    └── tcp_flags_0x02.png
+
 
 
 
