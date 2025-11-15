@@ -6,7 +6,7 @@ HomeLab project for Cybersecurity
 This repository contains a complete cybersecurity homelab built using VirtualBox, Kali Linux, Ubuntu Server, and Metasploitable 2.  
 The project covers offensive and defensive security, including reconnaissance, IDS/IPS detection, web exploitation, SIEM monitoring, privilege escalation, and an end-to-end incident timeline.
 
-Each lab folder includes:
+Each lab includes:
 - A README documenting procedures and findings  
 - Screenshots  
 - PCAP/log files  
@@ -22,7 +22,7 @@ This project is designed as a portfolio-oriented demonstration of practical cybe
 Folder: `/lab1/`  
 Description: Nmap scanning, tcpdump packet capture, Wireshark filtering, baseline traffic analysis.  
 Link:  
-https://github.com/USERNAME/Homelab/tree/main/lab1
+https://github.com/minjintiger/HomeLab1-Recon-and-Traffic-analysis
 
 ---
 
@@ -30,7 +30,6 @@ https://github.com/USERNAME/Homelab/tree/main/lab1
 Folder: `/lab2/`  
 Description: Install Suricata, enable AF_PACKET monitoring, detect Nmap activity, analyze EVE JSON logs, create custom rules.  
 Link:  
-https://github.com/USERNAME/Homelab/tree/main/lab2
 
 ---
 
@@ -38,7 +37,6 @@ https://github.com/USERNAME/Homelab/tree/main/lab2
 Folder: `/lab3/`  
 Description: Deploy DVWA via Docker, exploit SQLi and XSS, analyze traffic, create Suricata detection rules, apply mitigations.  
 Link:  
-https://github.com/USERNAME/Homelab/tree/main/lab3
 
 ---
 
@@ -46,7 +44,6 @@ https://github.com/USERNAME/Homelab/tree/main/lab3
 Folder: `/lab4/`  
 Description: User enumeration, SUID/GUID abuse, PATH hijacking, cron exploitation, kernel-level privilege escalation, post-exploitation documentation.  
 Link:  
-https://github.com/USERNAME/Homelab/tree/main/lab4
 
 ---
 
@@ -54,7 +51,6 @@ https://github.com/USERNAME/Homelab/tree/main/lab4
 Folder: `/lab5/`  
 Description: Install Wazuh Manager and Agent, forward Suricata alerts into SIEM, generate authentication and file integrity events, build dashboards.  
 Link:  
-https://github.com/USERNAME/Homelab/tree/main/lab5
 
 ---
 
@@ -62,7 +58,6 @@ https://github.com/USERNAME/Homelab/tree/main/lab5
 Folder: `/lab6/`  
 Description: Combine Suricata logs, Wazuh events, PCAP data, and system logs to build a complete end-to-end attack timeline.  
 Link:  
-https://github.com/USERNAME/Homelab/tree/main/lab6
 
 ---
 
@@ -78,16 +73,8 @@ https://github.com/USERNAME/Homelab/tree/main/lab6
 
 ## Repository Structure
 
-/lab1/ Recon and Traffic Analysis
-/lab2/ Suricata IDS
-/lab3/ DVWA Exploitation (SQLi, XSS)
-/lab4/ Linux Privilege Escalation
-/lab5/ Wazuh SIEM
-/lab6/ Incident Timeline
-/docs/ Diagrams and notes
-README.md (this file)
+README.md 
 LICENSE
-
 
 ---
 
