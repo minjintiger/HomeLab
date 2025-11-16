@@ -22,7 +22,7 @@ This project is designed as a portfolio-oriented demonstration of practical cybe
 Folder: `/lab1/`  
 Description: Nmap scanning, tcpdump packet capture, Wireshark filtering, baseline traffic analysis.  
 Link:  
-https://github.com/minjintiger/HomeLab1-Recon-and-Traffic-analysis
+https://github.com/minjintiger/HomeLab/tree/main/lab1
 
 ---
 
@@ -30,6 +30,7 @@ https://github.com/minjintiger/HomeLab1-Recon-and-Traffic-analysis
 Folder: `/lab2/`  
 Description: Install Suricata, enable AF_PACKET monitoring, detect Nmap activity, analyze EVE JSON logs, create custom rules.  
 Link:  
+https://github.com/minjintiger/HomeLab/tree/main/lab2
 
 ---
 
