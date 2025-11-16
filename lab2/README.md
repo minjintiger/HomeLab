@@ -164,12 +164,12 @@ After applying Fix #1, the rule triggered successfully.
 ---
 
 ## Files Included in This Lab
-
-/lab2-suricata/
+```text
+/lab2/
 ├── README.md
 ├── local.rules
 ├── Suricata-IDS-Detection.pdf
-└── images/
+└── Screenshots/
     ├── suricata_running.png
     ├── nmap_scan.png
     ├── nmap_ping.png
@@ -178,8 +178,8 @@ After applying Fix #1, the rule triggered successfully.
     ├── local_rules_before.png
     ├── local_rules_after.png
     ├── local_rule_added_to_config.png
-    ├── suricata_config_test.png
-
+    └── suricata_config_test.png
+```
 ---
 
 ## Summary
