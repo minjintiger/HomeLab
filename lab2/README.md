@@ -1,6 +1,6 @@
-# HomeLab 2 — Suricata IDS Detection (Nmap, eve.json, Custom Rules)
+# HomeLab 2 — Suricata IDS Detection (Nmap, eve.json, Custom ICMP Rule)
 
-This lab demonstrates intrusion detection using Suricata IDS. I performed Nmap scans from Kali, analyzed alerts in eve.json, and created a custom Suricata rule to detect ICMP traffic. This lab builds directly on Lab 1 by showing how real scan traffic appears inside an IDS.
+This lab demonstrates intrusion detection using Suricata IDS. I performed Nmap scans from Kali, analyzed alerts in eve.json, verified Suricata’s rule processing, and created a custom ICMP rule. This lab builds on Lab 1 network reconnaissance by showing how scan traffic appears through an IDS.
 
 ---
 
@@ -14,143 +14,152 @@ This lab demonstrates intrusion detection using Suricata IDS. I performed Nmap s
 
 Network Mode: VirtualBox Host-Only  
 Suricata Interface: enp0s3  
-Log File: /var/log/suricata/eve.json
+Suricata Logs: /var/log/suricata/eve.json
 
 ---
 
 ## Objectives
 
-- Verify Suricata installation and rule loading  
-- Perform Nmap scans to generate IDS alerts  
-- Extract alert logs from eve.json using jq  
-- Understand Suricata alert fields (signature, flow, src/dest IPs)  
-- Create & test a custom ICMP detection rule  
-- Troubleshoot HOME_NET / EXTERNAL_NET mismatches  
+- Verify Suricata installation and rule loading
+- Perform Nmap scans to generate IDS alerts
+- Analyze alert entries in eve.json using jq
+- Understand Suricata alert structure
+- Build and trigger a custom ICMP detection rule
+- Troubleshoot HOME_NET / EXTERNAL_NET rule-matching problems
 
 ---
 
-## Step 1 — Verify Suricata Installation
+## Step 1 — Verify Suricata Is Running
 
 Command:
-sudo systemctl status suricata
+sudo suricata -c /etc/suricata/suricata.yaml -i enp0s3
 
-Expected:
-- Engine started  
-- Threads created  
-- No fatal errors  
+Expected output:
+“Threads created … Engine started.”
 
-Screenshot saved as: suricata_running.png
+Screenshot: images/suricata_running.png
 
 ---
 
 ## Step 2 — Perform Nmap Scans from Kali
 
-Aggressive + OS detection + NSE scripts:
+Aggressive Scan:
 nmap -sS -sV -A 192.168.56.102
 
-Summary of results:
-- Target responds to host discovery  
-- Multiple ICMP and TCP probes sent  
-- Ubuntu server has no open ports (RST responses)  
-- Suricata detects ICMP anomalies and Nmap behavior  
+Basic SYN Scan:
+nmap -p- -sS 192.168.56.102
 
-Screenshot saved as: nmap_scan.png
+PING Test:
+ping -c 4 192.168.56.102
+
+Screenshots:
+- images/nmap_scan.png
+- images/nmap_ping.png
+
+Summary:
+- Target responds to ICMP Echo Requests
+- All TCP ports return RST (closed)
+- No application-layer banners returned
+- Suricata detects ICMP anomalies triggered by the scan
 
 ---
 
-## Step 3 — Extract Suricata Alerts from eve.json
+## Step 3 — Check Suricata Alerts in eve.json
 
-Extract alert-only entries:
+Command to filter alerts only:
 sudo jq 'select(.event_type=="alert")' /var/log/suricata/eve.json | tail -n 20
 
-Example alert fields:
-- event_type: "alert"  
-- src_ip: 192.168.56.101 (Kali)  
-- dest_ip: 192.168.56.102 (Suricata host)  
-- proto: "ICMP"  
-- signature: "SURICATA ICMPv4 unknown code"  
+Example fields:
+- event_type: "alert"
+- src_ip: 192.168.56.101
+- dest_ip: 192.168.56.102
+- proto: ICMP
+- signature: "SURICATA ICMPv4 unknown code"
+- direction: "to_server" and "to_client"
 
-Suricata logs both:
-- direction: "to_server"  
-- direction: "to_client"  
-
-Screenshot saved as: alert_output.png
+Screenshot: images/alert_output.png
 
 ---
 
-## Step 4 — Create a Custom Suricata Rule
+## Step 4 — Build a Custom Local ICMP Rule
 
-Rule created in local.rules:
+Initial rule attempt (did not fire due to address-group mismatch):
+alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"LOCAL ICMP Ping from EXTERNAL to HOME_NET"; sid:1000001; rev:1;)
 
-alert icmp any any -> any any (msg:"LOCAL ICMP Ping TEST"; sid:1000001; rev:2;)
+I discovered that Suricata loads rules from:
+ /var/lib/suricata/rules/local.rules
+not from the /etc directory.
 
-Saved in:
-/var/lib/suricata/rules/local.rules
+Screenshot: images/local_rules_before.png  
+Screenshot: images/local_rules_after.png  
 
-Test the Suricata configuration:
+I confirmed Suricata is loading local.rules via:
+Screenshot: images/local_rule_added_to_config.png
+
+Final simplified rule that works in this lab:
+alert icmp any any -> any any (msg:"LOCAL ICMP Ping TEST"; sid:1000001; rev:1;)
+
+Reason: Both Kali and Ubuntu belong to HOME_NET (192.168.0.0/16), so EXTERNAL_NET → HOME_NET did not match.
+
+---
+
+## Step 5 — Test Suricata Configuration
+
+Command:
 sudo suricata -T -c /etc/suricata/suricata.yaml -v
 
 Expected:
-Configuration provided was successfully loaded.
+Configuration provided was successfully loaded. 0 rules failed.
 
-Screenshots:
-- local_rule.png  
-- suricata_config_test.png
+Screenshot: images/suricata_config_test.png
 
 ---
 
-## Step 5 — Trigger the Custom Rule
+## Step 6 — Trigger the Custom Rule
 
 From Kali:
 ping -c 4 192.168.56.102
 
-Extract alerts:
+Check eve.json:
 sudo jq 'select(.event_type=="alert")' /var/log/suricata/eve.json | tail -n 20
 
 Expected:
-- signature: "LOCAL ICMP Ping TEST"  
-- src_ip: Kali  
-- dest_ip: Suricata  
+signature: "LOCAL ICMP Ping TEST"
+src_ip: "192.168.56.101"
+dest_ip: "192.168.56.102"
 
-Screenshot saved as: custom_rule_alert.png
+Screenshot: images/custom_rule_alert.png
 
 ---
 
-## Troubleshooting — Why My First Rule Didn’t Fire
+## Troubleshooting Summary — Why Original Rule Did Not Trigger
 
-Original rule:
-alert icmp $EXTERNAL_NET any -> $HOME_NET any (...)
+My initial rule required:
+EXTERNAL_NET → HOME_NET ICMP
 
-Issue:
-Suricata’s default HOME_NET was extremely broad:
-
+Suricata’s suricata.yaml shows:
 HOME_NET: "[192.168.0.0/16,10.0.0.0/8,172.16.0.0/12]"
 EXTERNAL_NET: "!$HOME_NET"
 
-Because 192.168.56.0/24 is inside 192.168.0.0/16:
-- Kali (192.168.56.101) → HOME_NET  
-- Ubuntu (192.168.56.102) → HOME_NET  
+Because both Kali and Ubuntu are in 192.168.56.0/24, they are BOTH inside HOME_NET.
 
 Therefore:
-- Traffic was HOME_NET → HOME_NET  
-- My rule required EXTERNAL_NET → HOME_NET  
-- So the rule could never match  
+- Kali → Ubuntu ICMP traffic = HOME_NET → HOME_NET
+- My rule only matched EXTERNAL_NET → HOME_NET
+- So Suricata ignored it
 
----
+To fix this, I considered three options:
 
-### Three Correct Fixes Considered
+1. Simplify the rule (chosen)
+   alert icmp any any -> $HOME_NET any (...)
 
-1. **Simplify the rule (chosen)**  
-   alert icmp any any -> any any (...)
+2. Redefine HOME_NET and EXTERNAL_NET
+   HOME_NET = Ubuntu
+   EXTERNAL_NET = Kali
 
-2. **Redefine HOME_NET and EXTERNAL_NET**  
-   HOME_NET: "[192.168.56.102]"  
-   EXTERNAL_NET: "[192.168.56.101]"   
+3. Restrict HOME_NET to 192.168.56.0/24
 
-3. **Restrict HOME_NET to the VM subnet**  
-   192.168.0.0/16 → 192.168.56.0/24  
-
-After applying Fix #1, the custom ICMP rule triggered successfully.
+After applying Fix #1, the rule triggered successfully.
 
 ---
 
@@ -163,17 +172,20 @@ After applying Fix #1, the custom ICMP rule triggered successfully.
 └── images/
     ├── suricata_running.png
     ├── nmap_scan.png
+    ├── nmap_ping.png
     ├── alert_output.png
-    ├── local_rule.png
-    ├── suricata_config_test.png
     ├── custom_rule_alert.png
+    ├── local_rules_before.png
+    ├── local_rules_after.png
+    ├── local_rule_added_to_config.png
+    ├── suricata_config_test.png
 
 ---
 
 ## Summary
 
-- Suricata detected ICMP-based anomalies triggered by Nmap  
-- Extracted alerts from eve.json using jq  
-- Wrote, tested, and validated a custom ICMP rule  
-- Diagnosed HOME_NET / EXTERNAL_NET issues  
-- Completed the full IDS workflow: scan → detection → rule creation → alert  
+- Suricata successfully detected Nmap ICMP anomalies
+- Alerts were extracted from eve.json using jq
+- A custom ICMP rule was written, loaded, tested, and validated
+- Diagnosed HOME_NET / EXTERNAL_NET mismatch
+- Completed full IDS workflow: scanning → alerting → custom rule creation → detection
