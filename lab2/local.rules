@@ -1,1 +1,1 @@
-
+alert icmp any any -> any any (msg:"LOCAL ICMP Ping TEST"; sid:1000001; rev:1;)
