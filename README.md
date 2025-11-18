@@ -38,6 +38,7 @@ https://github.com/minjintiger/HomeLab/tree/main/lab2
 Folder: `/lab3/`  
 Description: Deploy DVWA via Docker, exploit SQLi and XSS, analyze traffic, create Suricata detection rules, apply mitigations.  
 Link:  
+https://github.com/minjintiger/HomeLab/tree/main/lab3
 
 ---
 
@@ -45,6 +46,7 @@ Link:
 Folder: `/lab4/`  
 Description: User enumeration, SUID/GUID abuse, PATH hijacking, cron exploitation, kernel-level privilege escalation, post-exploitation documentation.  
 Link:  
+https://github.com/minjintiger/HomeLab/tree/main/lab4
 
 ---
 
@@ -52,6 +54,7 @@ Link:
 Folder: `/lab5/`  
 Description: Install Wazuh Manager and Agent, forward Suricata alerts into SIEM, generate authentication and file integrity events, build dashboards.  
 Link:  
+https://github.com/minjintiger/HomeLab/tree/main/lab5
 
 ---
 
@@ -59,6 +62,7 @@ Link:
 Folder: `/lab6/`  
 Description: Combine Suricata logs, Wazuh events, PCAP data, and system logs to build a complete end-to-end attack timeline.  
 Link:  
+https://github.com/minjintiger/HomeLab/tree/main/lab6
 
 ---
 
