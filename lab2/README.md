@@ -163,7 +163,18 @@ After applying Fix #1, the rule triggered successfully.
 
 ---
 
+## Summary
+
+- Suricata successfully detected Nmap ICMP anomalies
+- Alerts were extracted from eve.json using jq
+- A custom ICMP rule was written, loaded, tested, and validated
+- Diagnosed HOME_NET / EXTERNAL_NET mismatch
+- Completed full IDS workflow: scanning → alerting → custom rule creation → detection
+
+---
+
 ## Files Included in This Lab
+
 ```text
 /lab2/
 ├── README.md
@@ -181,11 +192,3 @@ After applying Fix #1, the rule triggered successfully.
     └── suricata_config_test.png
 ```
 ---
-
-## Summary
-
-- Suricata successfully detected Nmap ICMP anomalies
-- Alerts were extracted from eve.json using jq
-- A custom ICMP rule was written, loaded, tested, and validated
-- Diagnosed HOME_NET / EXTERNAL_NET mismatch
-- Completed full IDS workflow: scanning → alerting → custom rule creation → detection
