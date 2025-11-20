@@ -179,6 +179,7 @@ I confirmed this by logging out and logging back in successfully.
 ---
 
 ## Files Included in This Lab
+'''text
 
 /lab3/
 ├── README.md
@@ -229,5 +230,7 @@ I confirmed this by logging out and logging back in successfully.
     XSS_Stored_alert_after_submission.png
     XSS_Stored_reentering.png
     XSS_Stored_refresh.png
+
+
 ---
 
