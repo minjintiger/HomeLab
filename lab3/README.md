@@ -260,9 +260,40 @@ Below are the realistic mitigations for each vulnerability.
 
 ---
 
+## Defensive Summary
+
+Overall, every issue in this lab comes from the same root problem: the application trusts user input too much and handles it without validation. Most of the vulnerabilities disappear as soon as the server stops taking raw input and stops executing it directly.
+
+In practice, the defensive strategy is simple:
+
+1. Validate everything.  
+   Never assume user input is safe. Sanitize and filter it before using it anywhere.
+
+2. Do not echo user input without escaping it.  
+   This blocks most XSS issues before they happen.
+
+3. Never build SQL or shell commands by string concatenation.  
+   Use prepared statements for SQL and avoid system() entirely.
+
+4. Treat file uploads as dangerous by default.  
+   Enforce strict allowlists and prevent execution inside upload folders.
+
+5. Remove risky PHP settings.  
+   Features like allow_url_include should always stay off.
+
+6. Add CSRF protections everywhere.  
+   Any state-changing action must require a valid CSRF token.
+
+7. Limit exposure even if something breaks.  
+   Use least-privilege accounts, disable detailed error messages, and avoid leaking filesystem paths or stack traces.
+
+When these basic principles are in place, most of the attacks from this lab become much harder or impossible. The point of DVWA is to show how quickly everything falls apart when those protections are missing. In a real environment, a secure baseline and consistent validation practices are enough to stop all of these issues before they happen
+
+---
+
 ## Files Included in This Lab
 
-'''text
+```text
 /lab3/
 ├── README.md
 ├── DVWA_Web_Exploitation.pdf
