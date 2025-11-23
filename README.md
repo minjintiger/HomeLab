@@ -34,10 +34,10 @@ https://github.com/minjintiger/HomeLab/tree/main/lab2
 
 ---
 
-### 3. Lab 3 — DVWA Exploitation (SQL Injection, XSS)  
-Folder: `/lab3/`  
-Description: Deploy DVWA via Docker, exploit SQLi and XSS, analyze traffic, create Suricata detection rules, apply mitigations.  
-Link:  
+### 3. Lab 3 — DVWA Web Exploitation (SQLi, Command Injection, XSS, LFI, RFI, CSRF, File Upload RCE)
+Folder: /lab3/
+Description: Performed full web exploitation against DVWA hosted on Metasploitable2. Executed SQL injection, command injection, reflected/stored XSS, file upload leading to remote code execution, Local/Remote File Inclusion, and CSRF password-change attack. Included explanations, lab walkthrough, mitigations, and security hardening recommendations.
+Link: 
 https://github.com/minjintiger/HomeLab/tree/main/lab3
 
 ---
