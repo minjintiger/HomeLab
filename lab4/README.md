@@ -116,20 +116,22 @@ Screenshot: Screenshots/lab4_suid_ubuntu_root.png
 ---
 
 ## Files Included in This Lab
-
+```text
 /lab4/  
-README.md  
-linpeas.log  
-linpeas_after_suid.log  
-Screenshots/  
-    lab4_user_creation.png  
-    lab4_sudo_l.png  
-    lab4_system_info.png  
-    lab4_path_env.png  
-    lab4_suid_list.png  
-    lab4_crontab.png  
-    lab4_linpeas_download.png  
-    lab4_linpeas_run.png  
-    lab4_suid_rootbash.png  
-    lab4_after_suid.png  
-    lab4_suid_ubuntu_root.png
+├── README.md  
+├── linpeas.log  
+├── Linux Privilege Escalation.pdf
+├── linpeas_after_suid.log  
+└── Screenshots/  
+    ├── lab4_user_creation.png  
+    ├── lab4_sudo_l.png  
+    ├── lab4_system_info.png  
+    ├── lab4_path_env.png  
+    ├── lab4_suid_list.png  
+    ├── lab4_crontab.png  
+    ├── lab4_linpeas_download.png  
+    ├── lab4_linpeas_run.png  
+    ├── lab4_suid_rootbash.png  
+    ├── lab4_after_suid.png  
+    └──lab4_suid_ubuntu_root.png
+```
