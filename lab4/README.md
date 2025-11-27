@@ -73,8 +73,8 @@ Linpeas was downloaded using a local Python HTTP server and executed:
 ./linpeas.sh | tee linpeas.log
 
 The initial linpeas scan did not identify any privilege escalation vectors.  
-Download screenshot: Screenshots/lab4_linpeas_download.png  
-Execution screenshot: Screenshots/lab4_linpeas_run.png
+``Download screenshot: Screenshots/lab4_linpeas_download.png  ``
+``Execution screenshot: Screenshots/lab4_linpeas_run.png``
 
 ---
 
