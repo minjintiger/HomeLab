@@ -51,7 +51,7 @@ https://github.com/minjintiger/HomeLab/tree/main/lab4
 ---
 
 ### 5. Lab 5 — Wazuh SIEM Log Monitoring & Custom Correlation  
-Folder: /lab5/  
+Folder: `/lab5/`
 Description: Deploy Wazuh Manager and Agent, collect SSH and system logs, detect Nmap scans, perform SSH brute-force attacks, and build a custom correlation rule to identify repeated authentication failures.  
 Link:  
 https://github.com/minjintiger/HomeLab/tree/main/lab5
