@@ -35,7 +35,7 @@ sudo deluser labuser sudo
 id labuser
 
 This confirms labuser was created and removed from the sudo group.  
-Screenshot: Screenshots/lab4_user_creation.png
+``Screenshot: Screenshots/lab4_user_creation.png``
 
 ---
 
@@ -48,15 +48,15 @@ uname -a
 cat /etc/os-release
 
 The server is Ubuntu 24.04.3 LTS running kernel 6.8.0-87-generic.  
-Screenshot: Screenshots/lab4_system_info.png
+``Screenshot: Screenshots/lab4_system_info.png``
 
 PATH enumeration:
 echo $PATH  
-Screenshot: Screenshots/lab4_path_env.png
+``Screenshot: Screenshots/lab4_path_env.png``
 
 SUID binaries:
 find / -perm -4000 -type f 2>/dev/null  
-Screenshot: Screenshots/lab4_suid_list.png
+``Screenshot: Screenshots/lab4_suid_list.png``
 
 Cron jobs:
 cat /etc/crontab  
@@ -87,7 +87,7 @@ sudo cp /bin/bash /usr/local/bin/rootbash
 sudo chmod 4755 /usr/local/bin/rootbash  
 ls -ls /usr/local/bin/rootbash
 
-Screenshot: Screenshots/lab4_suid_rootbash.png
+``Screenshot: Screenshots/lab4_suid_rootbash.png``
 
 ---
 
@@ -99,7 +99,7 @@ After adding the SUID binary, linpeas was executed again:
 Linpeas detected:
 -rwsr-xr-x 1 root root 1.4M /usr/local/bin/rootbash (Unknown SUID binary!)
 
-Screenshot: Screenshots/lab4_after_suid.png
+``Screenshot: Screenshots/lab4_after_suid.png``
 
 ---
 
@@ -111,7 +111,7 @@ As labuser:
  id
 
 This provided a root shell due to the SUID misconfiguration.  
-Screenshot: Screenshots/lab4_suid_ubuntu_root.png
+``Screenshot: Screenshots/lab4_suid_ubuntu_root.png``
 
 ---
 
