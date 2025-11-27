@@ -10,7 +10,7 @@ VM              | Role
 --------------- | -----
 Ubuntu Server   | Target
 
-Network Mode: VirtualBox Host-Only  
+Network Mode: VirtualBox Host-Only, NAT  
 User created for exploitation: labuser
 
 ---
