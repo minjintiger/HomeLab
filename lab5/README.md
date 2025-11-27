@@ -251,8 +251,6 @@ DVWA detection               | Failed due to decoder mismatch
     └── custom_rule_ssh.png
 ```
 
----
-
 This completes **HomeLab 5 — Wazuh SIEM Log Monitoring & Custom Rule Correlation**.  
 This lab includes the full DVWA attempt, the troubleshooting steps, and the final working SSH + Nmap detection setup.
 ```
