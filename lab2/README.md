@@ -12,7 +12,7 @@ This lab demonstrates intrusion detection using Suricata IDS. I performed Nmap s
 | Ubuntu Server    | IDS Target | 192.168.56.102 |
 | Metasploitable 2 | Not used   | 192.168.56.103 |
 
-Network Mode: VirtualBox Host-Only  
+Network Mode: VirtualBox Host-Only, NAT   
 Suricata Interface: enp0s3  
 Suricata Logs: /var/log/suricata/eve.json
 
