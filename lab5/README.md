@@ -12,7 +12,7 @@ Wazuh OVA       | Manager/Indexer/UI     | 192.168.56.103
 Ubuntu Server   | Target (Agent)         | 192.168.56.101
 Kali Linux      | Attacker               | 192.168.56.102
 
-Network: VirtualBox Host-Only  
+Network: VirtualBox Host-Only, NAT  
 Logs collected: `/var/log/auth.log`, `/var/log/syslog`
 
 ---
