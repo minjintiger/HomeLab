@@ -1,8 +1,6 @@
 # HomeLab 5 — Wazuh SIEM Log Monitoring & Custom Rule Correlation
 
-This lab shows how I collected logs from an Ubuntu Server using Wazuh, detected Nmap scans and SSH brute-force attempts from Kali, and built a working custom correlation rule.  
-This lab originally started as a DVWA web-attack detection lab, but because Wazuh’s web-accesslog decoder kept rejecting DVWA’s Apache logs, I changed the direction to something stable and reproducible.  
-Below is the full process, including everything I tried and why I changed the plan.
+This lab demonstrates endpoint log collection, attack detection, and custom correlation rule development using the Wazuh SIEM stack. The lab originally began as a DVWA web-attack detection project, but after extensive troubleshooting of Wazuh’s Apache log decoders and ingestion pipeline, the environment was re-scoped to focus on stable, reproducible SSH authentication and Nmap network-scan detections. This README documents **the entire process**, including the DVWA failure analysis, troubleshooting steps, and the final working detection pipeline.
 
 ---
 
