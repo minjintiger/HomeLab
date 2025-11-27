@@ -78,7 +78,7 @@ https://github.com/minjintiger/HomeLab/tree/main/lab6
 
 ## Repository Structure
 
-README.md 
+README.md  
 LICENSE
 
 ---
