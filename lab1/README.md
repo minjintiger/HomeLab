@@ -12,7 +12,7 @@ This lab demonstrates network reconnaissance using Nmap, packet capture with tcp
 | Ubuntu Server    |  Target  | 192.168.56.102 |
 | Metasploitable 2 | Not used | 192.168.56.103 |
 
-Network Mode: VirtualBox Host-Only  
+Network Mode: VirtualBox Host-Only, NAT  
 Monitored Interface: `enp0s3`
 
 ---
