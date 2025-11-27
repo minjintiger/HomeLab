@@ -1,0 +1,18 @@
+<group name="custom-ssh-bruteforce,">
+
+  <rule id="100990" level="8">
+    <if_sid>5760</if_sid>
+    <description>SSH: Failed login (wrapped SID 5760).</description>
+    <group>ssh,authentication_failed,</group>
+    <mitre><id>T1110</id></mitre>
+  </rule>
+
+  <rule id="100991" level="12" frequency="3" timeframe="60">
+    <if_matched_sid>100990</if_matched_sid>
+    <same_srcip/>
+    <description>SSH: Brute-force suspected (≥3 wrapped 5760 events from same IP in 60s).</description>
+    <group>ssh,authentication_failures,bruteforce,</group>
+    <mitre><id>T1110</id></mitre>
+  </rule>
+
+</group>
