@@ -58,13 +58,21 @@ https://github.com/minjintiger/HomeLab/tree/main/lab5
 
 ---
 
-### 6. Lab 6 — Incident Timeline (Capstone Project)  
+### 6. Lab 6 — Splunk SIEM Detection (Suricata + SSH + Nmap/Hydra)  
 Folder: `/lab6/`  
-Description: Combine Suricata logs, Wazuh events, PCAP data, and system logs to build a complete end-to-end attack timeline.  
+Description: Build a Splunk-based SIEM pipeline structured similarly to the detection workflow in Lab 5. Ingest Suricata alerts and SSH authentication logs, generate Nmap and Hydra attacks from Kali, write SPL searches to identify malicious activity, and build simple dashboards to visualize the events.      
 Link:  
 https://github.com/minjintiger/HomeLab/tree/main/lab6
 
 ---
+
+### 7. Lab 7 — Incident Timeline (Capstone with Splunk)  
+Folder: `/lab7/`  
+Description: Combine Suricata, Splunk log events, PCAPs, SSH auth logs, and attacker actions to build an end-to-end incident timeline. The capstone ties together detection, correlation, and analysis into one final narrative.  
+Link:  
+https://github.com/minjintiger/HomeLab/tree/main/lab7
+
+---  
 
 ## Environment Summary
 
