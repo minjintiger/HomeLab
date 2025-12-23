@@ -41,7 +41,7 @@ The successful payload had a different response length, indicating the applicati
 Explanation:  
 DVWA does not implement account lockout, IP throttling, or delays between attempts. Any attacker can brute-force the login by monitoring response length, response time, or redirect behavior.
 
-Example code:  
+Example Code:  
 ```
 import requests
 
@@ -78,7 +78,7 @@ Because the input contains additional SQL logic, the WHERE clause becomes perman
 Risk impact:  
 SQL injection enables attackers to retrieve, modify, or delete data, escalate privileges, or chain into RCE in certain database environments.
 
-Example code:  
+Example Code:  
 ```
 SELECT first_name, last_name
 FROM users
@@ -246,13 +246,26 @@ Below are the realistic mitigations for each vulnerability.
 - Never concatenate user input directly into SQL queries.
 - Use prepared statements (parameterized queries) everywhere.
 - Enforce strict input validation and type checking.
-- Disable detailed SQL error output in production.
-
+- Disable detailed SQL error output in production.  
+Example Code:
+```php
+$stmt = $pdo->prepare(
+  "SELECT first_name, last_name FROM users WHERE user_id = :id"
+);
+$stmt->execute(['id' => $id]);
+```
 ### Command Injection
 - Do not pass raw user input into system() or shell commands.
 - Use safe system APIs, not shell execution.
 - Validate input strictly (only allow expected characters).
 - Drop privileges for web services so even if compromised, impact is limited.
+Example Code:
+```
+if (!filter_var($ip, FILTER_VALIDATE_IP)) {
+    die("Invalid input");
+}
+exec("ping -c 4 " . escapeshellarg($ip));
+```
 
 ### Reflected XSS
 - Escape all user-controlled output before rendering (HTML encode, JS encode).
@@ -270,7 +283,13 @@ Below are the realistic mitigations for each vulnerability.
 - Never allow executable files inside publicly reachable directories.
 - Rename uploads to random UUIDs and store them outside the web root.
 - Disable execution on upload directories using server configuration.
-
+Example Code:
+```
+$allowed = ['image/jpeg', 'image/png'];
+if (!in_array($_FILES['file']['type'], $allowed)) {
+    die("Invalid file type");
+}
+```
 ### Local File Inclusion (LFI)
 - Do not pass user input directly to include(), require(), or file reads.
 - Whitelist allowed file paths instead of allowing arbitrary paths.
@@ -288,7 +307,12 @@ Below are the realistic mitigations for each vulnerability.
 - Require POST instead of GET for actions that modify data.
 - Validate Origin and Referer headers.
 - Use SameSite=Lax or SameSite=Strict cookies to prevent cross-site requests.
-
+Example Code:
+```
+if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+    die("CSRF detected");
+}
+```
 ---
 
 ## Defensive Summary
