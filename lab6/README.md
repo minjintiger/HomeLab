@@ -169,6 +169,8 @@ Dashboard visualization      | Working
 ```
 /lab6/
 ├── README.md
+├── smalllist.txt
+├── Splunk SIEM Log Monitoring & Detection Workflow.pdf
 └── screenshots/
     ├── lab6-01-suricata-ingest.png
     ├── lab6-02-authlog-ingest.png
