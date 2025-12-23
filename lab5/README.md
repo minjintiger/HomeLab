@@ -248,5 +248,4 @@ DVWA detection               | Failed due to decoder mismatch
     ├── custom_rule_brute_force_tested.png
     └── custom_rule_ssh.png
 ```
-This lab includes the full DVWA attempt, the troubleshooting steps, and the final working SSH + Nmap detection setup.
-```
+This lab includes the full DVWA attempt, the troubleshooting steps, and the final working SSH + Nmap detection setup.  
