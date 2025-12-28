@@ -74,6 +74,14 @@ https://github.com/minjintiger/HomeLab/tree/main/lab7
 
 ---  
 
+### 8. Automation  
+Folder: `/automation/`  
+Description:  
+Link:  
+https://github.com/minjintiger/HomeLab/tree/main/automation  
+
+---  
+
 ## Environment Summary
 
 - VirtualBox (Host: Ubuntu Linux)
