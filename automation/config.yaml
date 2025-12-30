@@ -1,0 +1,30 @@
+controller:
+  evidence_dir: "../lab7/evidence"
+
+ssh:
+  key_path: "C:\\Users\\USERNAME\\.ssh\\homelab_ed25519"
+  timeout_sec: 12
+
+hosts:
+  kali:
+    ip: "KALI_IP"
+    user: "kali"
+  ubuntu:
+    ip: "UBUNTU_IP"
+    user: "lab"
+
+paths:
+  suricata_eve_json: "/var/log/suricata/eve.json"
+  auth_log: "/var/log/auth.log"
+
+splunk_api:
+  base_url: "https://SPLUNK_HOST:8089"
+  verify_tls: false
+  token_env: "SPLUNK_TOKEN"
+  app: "search"
+  owner: "nobody"
+  saved_report_name: "LAB6 - Suricata + SSH Alerts"
+
+scenario_defaults:
+  nmap_command: "nmap -sS -sV -O 192.168.56.101"
+  time_range: "-30m"

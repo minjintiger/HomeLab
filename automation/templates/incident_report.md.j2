@@ -1,0 +1,16 @@
+# Incident Response Report (Auto-Generated)
+
+**Case ID:** {{ case_id }}  
+**Generated (UTC):** {{ generated_utc }}  
+
+## Environment
+- Controller: Desktop Host (Windows)
+- Kali: {{ hosts.kali.user }}@{{ hosts.kali.ip }}
+- Ubuntu (Suricata + Splunk): {{ hosts.ubuntu.user }}@{{ hosts.ubuntu.ip }}
+- Suricata: {{ paths.suricata_eve_json }}
+- Auth log: {{ paths.auth_log }}
+
+## Scenario
+**Nmap command**
+```bash
+{{ nmap_command }}
