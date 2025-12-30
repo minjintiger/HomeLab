@@ -1,7 +1,7 @@
 # Cybersecurity Homelab Project
 
 This repository contains a complete cybersecurity homelab built using VirtualBox, Kali Linux, Ubuntu Server, and Metasploitable 2.  
-The project covers offensive and defensive security, including reconnaissance, IDS/IPS detection, web exploitation, SIEM monitoring, privilege escalation, an end-to-end incident timeline, and .
+The project covers offensive and defensive security, including reconnaissance, IDS/IPS detection, web exploitation, SIEM monitoring, privilege escalation, an end-to-end incident timeline, and automated detection orchestration.
 
 Each lab includes:
 - A README documenting procedures and findings  
