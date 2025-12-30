@@ -1,0 +1,4 @@
+count,sourcetype,src_ip
+40,suricata:json,192.168.56.X
+8,suricata:json,UBUNTUSERVER
+88,suricata:json,KALI
