@@ -1,6 +1,6 @@
 # Security Orchestration (Automation)
 
-This project implements a one-click security orchestration pipeline on a local homelab.
+This project implements a security orchestration pipeline on a local homelab.
 
 A single command from the host machine:
 - triggers an attack simulation,
