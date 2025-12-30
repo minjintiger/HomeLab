@@ -83,7 +83,7 @@ Actual runtime artifacts (tokens, internal IPs, timestamps, execution logs) are 
 
 Included sample evidence:
 
-lab7/evidence/sample_run/
+automation/sample_run/
 - attack_command_sample.txt
 - kali_attack_stdout_sample.txt
 - ubuntu_eve_tail_sample.json
