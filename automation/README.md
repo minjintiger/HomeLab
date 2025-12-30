@@ -1,4 +1,4 @@
-# One-Click Security Orchestration (Homelab Automation)
+# Security Orchestration (Automation)
 
 This project implements a one-click security orchestration pipeline on a local homelab.
 
@@ -9,7 +9,7 @@ A single command from the host machine:
 - exports detection results,
 - and automatically generates incident evidence and a response report.
 
-The goal is not to simulate a “perfect SOC”, but to demonstrate end-to-end detection automation, evidence handling, and reproducibility.
+The goal is to demonstrate end-to-end detection automation, evidence handling, and reproducibility.
 
 ---
 
