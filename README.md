@@ -1,10 +1,7 @@
-# HomeLab
-HomeLab project for Cybersecurity
-
 # Cybersecurity Homelab Project
 
 This repository contains a complete cybersecurity homelab built using VirtualBox, Kali Linux, Ubuntu Server, and Metasploitable 2.  
-The project covers offensive and defensive security, including reconnaissance, IDS/IPS detection, web exploitation, SIEM monitoring, privilege escalation, and an end-to-end incident timeline.
+The project covers offensive and defensive security, including reconnaissance, IDS/IPS detection, web exploitation, SIEM monitoring, privilege escalation, an end-to-end incident timeline, and .
 
 Each lab includes:
 - A README documenting procedures and findings  
@@ -20,7 +17,7 @@ This project is designed as a portfolio-oriented demonstration of practical cybe
 
 ### 1. Lab 1 — Reconnaissance and Traffic Analysis  
 Folder: `/lab1/`  
-Description: Nmap scanning, tcpdump packet capture, Wireshark filtering, baseline traffic analysis.  
+Description: Conducted Nmap reconnaissance, tcpdump packet capture, and Wireshark traffic analysis to establish baseline network behavior.  
 Link:  
 https://github.com/minjintiger/HomeLab/tree/main/lab1
 
@@ -28,7 +25,7 @@ https://github.com/minjintiger/HomeLab/tree/main/lab1
 
 ### 2. Lab 2 — Suricata IDS Detection  
 Folder: `/lab2/`  
-Description: Install Suricata, enable AF_PACKET monitoring, detect Nmap activity, analyze EVE JSON logs, create custom rules.  
+Description: Deployed Suricata IDS, detected active scanning activity, analyzed EVE JSON alerts, and validated custom detection rules.  
 Link:  
 https://github.com/minjintiger/HomeLab/tree/main/lab2
 
@@ -68,15 +65,15 @@ https://github.com/minjintiger/HomeLab/tree/main/lab6
 
 ### 7. Lab 7 — Incident Timeline (Capstone with Splunk)  
 Folder: `/lab7/`  
-Description: Combine Suricata, Splunk log events, PCAPs, SSH auth logs, and attacker actions to build an end-to-end incident timeline. The capstone ties together detection, correlation, and analysis into one final narrative.  
+Description: Correlated Suricata alerts, Splunk events, PCAPs, and attacker actions to reconstruct an end-to-end incident timeline and analytical narrative.  
 Link:  
 https://github.com/minjintiger/HomeLab/tree/main/lab7
 
 ---  
 
-### 8. Automation  
+### 8. Automation — Security Orchestration  
 Folder: `/automation/`  
-Description:  
+Description: Automates the detection workflow from Labs 6 and 7 by orchestrating attack execution, Suricata telemetry collection, Splunk saved-search dispatch, evidence export, and automatic incident report generation in a single run.  
 Link:  
 https://github.com/minjintiger/HomeLab/tree/main/automation  
 
@@ -84,7 +81,7 @@ https://github.com/minjintiger/HomeLab/tree/main/automation
 
 ## Environment Summary
 
-- VirtualBox (Host: Ubuntu Linux)
+- VirtualBox (Host: Ubuntu Linux, WindowOS)
 - Kali Linux (Attacker)
 - Ubuntu Server (Target, IDS, SIEM, DVWA host)
 - Metasploitable 2 (Vulnerable web server)
@@ -94,7 +91,9 @@ https://github.com/minjintiger/HomeLab/tree/main/automation
 
 ## Repository Structure
 
-README.md  
+README.md          - Project overview and lab index  
+lab1–lab7/         - Individual lab folders with documentation  
+automation/        - Security orchestration module  
 LICENSE
 
 ---
@@ -110,5 +109,4 @@ You may use or modify this work with proper attribution.
 
 Minjin Kim  
 Cybersecurity Homelab Project  
-Focused on practical offensive and defensive security.
-
+Focused on practical offensive, defensive, and detection oriented security engineering.
