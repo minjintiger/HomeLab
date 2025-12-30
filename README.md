@@ -41,7 +41,7 @@ https://github.com/minjintiger/HomeLab/tree/main/lab3
 
 ### 4. Lab 4 — Linux Privilege Escalation  
 Folder: `/lab4/`  
-Description: User enumeration, SUID/GUID abuse, PATH hijacking, cron exploitation, kernel-level privilege escalation, post-exploitation documentation.  
+Description: Performed user enumeration and multiple Linux privilege escalation techniques, including SUID/GUID abuse, PATH hijacking, cron exploitation, and kernel-level attacks, followed by post-exploitation documentation.  
 Link:  
 https://github.com/minjintiger/HomeLab/tree/main/lab4
 
