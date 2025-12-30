@@ -2,7 +2,7 @@ controller:
   evidence_dir: "../lab7/evidence"
 
 ssh:
-  key_path: "C:\\Users\\USERNAME\\.ssh\\homelab_ed25519"
+  key_path: "C:\\Users\\USERNAME\\.ssh\\PUBLICKEY"
   timeout_sec: 12
 
 hosts:
@@ -26,5 +26,5 @@ splunk_api:
   saved_report_name: "LAB6 - Suricata + SSH Alerts"
 
 scenario_defaults:
-  nmap_command: "nmap -sS -sV -O 192.168.56.101"
+  nmap_command: "nmap -sS -sV -O UBUNTU_IP"
   time_range: "-30m"
