@@ -85,7 +85,8 @@ https://github.com/minjintiger/HomeLab/tree/main/automation
 - Kali Linux (Attacker)
 - Ubuntu Server (Target, IDS, SIEM, DVWA host)
 - Metasploitable 2 (Vulnerable web server)
-- Networking: Host-Only Adapter (isolated lab network)
+- Networking: Host-Only Adapter (isolated lab network)  
+- `SPLUNK_TOKEN`: Splunk REST API authentication token used to dispatch saved searches and export detection results.  
 
 ---
 
